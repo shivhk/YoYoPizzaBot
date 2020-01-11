@@ -180,6 +180,7 @@ function getMenu(){
     var request = new XMLHttpRequest();
 
 // Open a new connection, using the GET request on the URL endpoint
+    console.log(process.env.PORT);
     request.open('GET', `http://localhost:${process.env.PORT}/menu`, true)
     request.onload = function() {
         // Begin accessing JSON data here
