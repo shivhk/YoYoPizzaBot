@@ -1,5 +1,3 @@
-const port = require('index')
-
 var $messages = $('.messages-content'),
     d, h, m,
     i = 0;
@@ -183,7 +181,14 @@ function getMenu(){
 
 // Open a new connection, using the GET request on the URL endpoint
     console.log(process.env.PORT);
-    request.open('GET', "http://localhost:"+port+"/menu", true)
+
+    fetch('/menu').then((response)=> response.json()).then(
+        (data) =>{
+            data.forEach
+        }
+    )
+
+    request.open('GET', "http://localhost:5000/menu", true)
     request.onload = function() {
         // Begin accessing JSON data here
         var data = JSON.parse(this.response)
