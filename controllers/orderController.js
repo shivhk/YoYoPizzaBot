@@ -45,21 +45,32 @@ exports.create = async (req, res) =>{
 
 exports.getOrder = async (req, res) =>{
 
-    const { orderId } = req.params;
+    const orderId = req.params.id.replace('=','');
+
+    console.log(orderId);
+
+    let allOrders = await OrderDetails.find({});
+
+    let  orderOfInterest = allOrders.filter((order)=> {
+        return order._id.toString().localeCompare(orderId) === 0;
+    });
+
+    console.log(orderOfInterest);
+    res.send({success:true, orders: orderOfInterest});
 
     // const query = {_id : mongoose.Types.ObjectId(orderId) , status : "approved"};
     //
     // console.log(query);
 
-    let order = await OrderDetails.findOne({ _id: orderId});
-
-    if (order)
-    {
-        res.send({ success: true, status : order.status });
-    }
-    else
-    {
-        res.send({success : false, status : "Looks like there's no order for this ID."})
-    }
+    // let order = await OrderDetails.findOne({ _id: orderId});
+    //
+    // if (order)
+    // {
+    //     res.send({ success: true, status : order.status });
+    // }
+    // else
+    // {
+    //     res.send({success : false, status : "Looks like there's no order for this ID."})
+    // }
 
 }

@@ -94,17 +94,18 @@ function message(msg) {
         console.log("to track order");
         $('<div class="message new"><figure class="avatar"><img src="images/pija.png" /></figure>' + "Please enter the order Id" + '</div>').appendTo($('.mCSB_container')).addClass('new');
 
+
     }
     else if(msg!=='1' || msg!=='2')
     {
-        fetch('/orderStatus/' + new URLSearchParams({
-            id: msg,
-        })).then((response) => response.json()).then(
-            (data) =>{
+        console.log(msg);
+        fetch('/orderStatus/' + new URLSearchParams(msg)).then((response)=>response.json()).then(
+            (data)=>{
                 console.log(data);
-            });
+                $('<div class="message new"><figure class="avatar"><img src="images/pija.png" /></figure>' +"Your Pizza is "+data.orders[0].status+'</div>').appendTo($('.mCSB_container')).addClass('new');
+            }
+        )
     }
-
 
 }
 
@@ -173,7 +174,7 @@ const saveOrder = () =>{
     ).then((data)=>{
         console.log(data);
         $('<div class="message new"><figure class="avatar"><img src="images/pija.png" /></figure>' +data.message.toPay+" on receiving the order."+ '</div>').appendTo($('.mCSB_container')).addClass('new');
-        $('<div class="message new"><figure class="avatar"><img src="images/pija.png" /></figure>' + "this is your orderID : "+data.message.orderId +". Use it to get the status of your order."+ '</div>').appendTo($('.mCSB_container')).addClass('new');
+        $('<div class="message new"><figure class="avatar"><img src="images/pija.png" /></figure>' + "This is your orderID : "+data.message.orderId +". Use it to get the status of your order."+ '</div>').appendTo($('.mCSB_container')).addClass('new');
     });
 }
 
