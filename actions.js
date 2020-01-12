@@ -153,12 +153,11 @@ const onCheckBoxChange = (event) => {
 }
 
 const saveOrder = () =>{
-    console.log("type of submitted orders : "+typeof[menuItems]);
+
+    console.log(menu);
     let finalOrder = menuItems.reduce((acc, item)=>{if (menu[item._id]){
         acc.push(item);
     }return acc;},[]);//defining an accumulator and setting its default value to an array
-
-    console.log(finalOrder);
 
     const options = {
         method: 'POST', // or 'PUT'
@@ -188,6 +187,8 @@ function getMenu(){
          .then((response)=> response.json())
          .then(data=>
          {
+             // console.log(data.menuItems);
+             menuItems = data.menuItems;
              $('<div class="message new"><figure class="avatar"><img src="images/pija.png" /></figure>' + `<div class="menuList">${data.menuItems.reduce((acc, item) =>`${acc}
                 <div class="menuItem">
                 <input type="checkbox" value="${item._id}" name="${item.name}" onchange="onCheckBoxChange(event)"/>
