@@ -1,4 +1,4 @@
-var port = require('index.js').port;
+// var port = requirejs('index.js').port;
 
 var $messages = $('.messages-content'),
     d, h, m,
@@ -182,34 +182,49 @@ function getMenu(){
     var request = new XMLHttpRequest();
 
 // Open a new connection, using the GET request on the URL endpoint
-    console.log(process.env.PORT);
+//     console.log(process.env.PORT);
 
-    fetch('/menu').then((response)=> response.json()).then(
-        (data) =>{
-            data.forEach
-        }
-    )
-
-    console.log("get call to be made at : http://localhost:"+port+"/menu");
-
-    request.open('GET', "http://localhost:"+port+"/menu", true)
-    request.onload = function() {
-        // Begin accessing JSON data here
-        var data = JSON.parse(this.response)
-        menuItems = data.menuItems;
-        if (request.status >= 200 && request.status < 400) {
-            console.log(data)
-
-                $('<div class="message new"><figure class="avatar"><img src="images/pija.png" /></figure>' + `<div class="menuList">${data.menuItems.reduce((acc, item) =>`${acc}<div class="menuItem">
+     fetch('/menu')
+         .then((response)=> response.json())
+         .then(data=>
+         {
+             $('<div class="message new"><figure class="avatar"><img src="images/pija.png" /></figure>' + `<div class="menuList">${data.menuItems.reduce((acc, item) =>`${acc}
+                <div class="menuItem">
                 <input type="checkbox" value="${item._id}" name="${item.name}" onchange="onCheckBoxChange(event)"/>
                 <label class="checkBoxLabel" for="${item.name}">${item.name}</label>
-                <input type="number" name="${item._id}" defaultvalue="1" min ="0" class="quantityInput" onchange="onQuantityChange(event)"/></div>`, '')}<button type="submit" class="menu-submit-button" onclick="saveOrder()">Send</button></div>` + '</div>').appendTo($('.mCSB_container')).addClass('new');
-                //how to check for negative numbers.
-        } else {
-            console.log('error')
-        }
-    }
+                <input type="number" name="${item._id}" defaultvalue="1" min ="0" class="quantityInput" onchange="onQuantityChange(event)"/>
+                </div>`, '')}
+                <button type="submit" class="menu-submit-button" onclick="saveOrder()">Send</button></div>` + '</div>').appendTo($('.mCSB_container')).addClass('new');
+         });
 
-    request.send()
+    // $('<div class="message new"><figure class="avatar"><img src="images/pija.png" /></figure>' + `<div class="menuList">${data.menuItems.reduce((acc, item) =>`${acc}
+    //             <div class="menuItem">
+    //             <input type="checkbox" value="${item._id}" name="${item.name}" onchange="onCheckBoxChange(event)"/>
+    //             <label class="checkBoxLabel" for="${item.name}">${item.name}</label>
+    //             <input type="number" name="${item._id}" defaultvalue="1" min ="0" class="quantityInput" onchange="onQuantityChange(event)"/>
+    //             </div>`, '')}
+    //             <button type="submit" class="menu-submit-button" onclick="saveOrder()">Send</button></div>` + '</div>').appendTo($('.mCSB_container')).addClass('new');
+
+    // console.log("get call to be made at : http://localhost:"+port+"/menu");
+
+    // request.open('GET', "http://localhost:"+port+"/menu", true)
+    // request.onload = function() {
+    //     // Begin accessing JSON data here
+    //     var data = JSON.parse(this.response)
+    //     menuItems = data.menuItems;
+    //     if (request.status >= 200 && request.status < 400) {
+    //         console.log(data)
+    //
+    //             $('<div class="message new"><figure class="avatar"><img src="images/pija.png" /></figure>' + `<div class="menuList">${data.menuItems.reduce((acc, item) =>`${acc}<div class="menuItem">
+    //             <input type="checkbox" value="${item._id}" name="${item.name}" onchange="onCheckBoxChange(event)"/>
+    //             <label class="checkBoxLabel" for="${item.name}">${item.name}</label>
+    //             <input type="number" name="${item._id}" defaultvalue="1" min ="0" class="quantityInput" onchange="onQuantityChange(event)"/></div>`, '')}<button type="submit" class="menu-submit-button" onclick="saveOrder()">Send</button></div>` + '</div>').appendTo($('.mCSB_container')).addClass('new');
+    //             //how to check for negative numbers.
+    //     } else {
+    //         console.log('error')
+    //     }
+    // }
+
+    // request.send()
 }
 
