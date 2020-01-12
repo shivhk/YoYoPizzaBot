@@ -1,6 +1,6 @@
  const express = require('express')
 
-const orderController = include('controllers/orderController');
+const orderController = include('controllers/OrderController');
 
 module.exports = app => {
     app.post('/createOrder', orderController.create);

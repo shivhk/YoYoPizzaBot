@@ -76,16 +76,23 @@ function message(msg) {
         console.log("One here");
         $('<div class="message loading new"><figure class="avatar"><img src="images/pija.png" /></figure><span></span></div>').appendTo($('.mCSB_container'));
         updateScrollbar();
-        getMenu();
-        setTimeout(function() {
-            $('.message.loading').remove();
-            $('<div class="message new"><figure class="avatar"><img src="images/pija.png" /></figure>' + "Please select from the menu and specify the quantity" + '</div>').appendTo($('.mCSB_container')).addClass('new');
+        $('.message.loading').remove();
+        $('<div class="message new"><figure class="avatar"><img src="images/pija.png" /></figure>' + "Please select from the menu and specify the quantity" + '</div>').appendTo($('.mCSB_container')).addClass('new');
 
-            setDate();
-            updateScrollbar();
-            i++;
-        }, 1000 + (Math.random() * 20) * 100);
-        console.log("HERE")
+        setDate();
+        updateScrollbar();
+        i++;
+
+        getMenu();
+        // setTimeout(function() {
+        //     $('.message.loading').remove();
+        //     $('<div class="message new"><figure class="avatar"><img src="images/pija.png" /></figure>' + "Please select from the menu and specify the quantity" + '</div>').appendTo($('.mCSB_container')).addClass('new');
+        //
+        //     setDate();
+        //     updateScrollbar();
+        //     i++;
+        // }, 1000 + (Math.random() * 20) * 100);
+
 
         return '<div>hello</div>'
     }
@@ -102,7 +109,15 @@ function message(msg) {
         fetch('/orderStatus/' + new URLSearchParams(msg)).then((response)=>response.json()).then(
             (data)=>{
                 console.log(data);
-                $('<div class="message new"><figure class="avatar"><img src="images/pija.png" /></figure>' +"Your Pizza is "+data.orders[0].status+'</div>').appendTo($('.mCSB_container')).addClass('new');
+                if (data.orders.exists)
+                {
+                    $('<div class="message new"><figure class="avatar"><img src="images/pija.png" /></figure>' +"Your Pizza is "+data.orders.orders[0].status+" It will be delivered to you shortly."+'</div>').appendTo($('.mCSB_container')).addClass('new');
+                }
+                else
+                {
+                    $('<div class="message new"><figure class="avatar"><img src="images/pija.png" /></figure>' +"Looks like there is no Order for this ID."+'</div>').appendTo($('.mCSB_container')).addClass('new');
+                }
+                $('<div class="message new"><figure class="avatar"><img src="images/pija.png" /></figure>' +"Enter Another Order ID or refresh the page to start the process over."+'</div>').appendTo($('.mCSB_container')).addClass('new');
             }
         )
     }
