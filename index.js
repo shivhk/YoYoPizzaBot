@@ -1,6 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const PORT = 5000;
+const PORT =process.env.PORT|| 5000;
 global.include = PORT;
 const app = express();
 const connectDB = require('./config/db');
@@ -20,6 +20,8 @@ app.listen(PORT, () => {
     console.log("Server is listening on port "+PORT);
 });
 
-module.exports = PORT;
+
+module.exports.port = PORT;
+
 include('routes/orderRoutes.js')(app);
 include('routes/MenuRoutes.js')(app);

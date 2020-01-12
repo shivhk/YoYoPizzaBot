@@ -1,3 +1,5 @@
+var port = require('index.js').port;
+
 var $messages = $('.messages-content'),
     d, h, m,
     i = 0;
@@ -188,7 +190,9 @@ function getMenu(){
         }
     )
 
-    request.open('GET', "http://localhost:5000/menu", true)
+    console.log("get call to be made at : http://localhost:"+port+"/menu");
+
+    request.open('GET', "http://localhost:"+port+"/menu", true)
     request.onload = function() {
         // Begin accessing JSON data here
         var data = JSON.parse(this.response)
