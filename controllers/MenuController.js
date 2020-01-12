@@ -1,4 +1,4 @@
-const { Menu } = include('database');
+const { Menu } = include('./Database');
 
 /**
  * this method will make a get request to the MenuItems collection in the db
