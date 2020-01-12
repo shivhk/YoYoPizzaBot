@@ -23,7 +23,7 @@ exports.create = async (req, res) =>{
             notes : req.body.notes,
 
             //why zero elements are stored in db?
-            itemsOrders: req.body.itemsOrders,
+            itemsOrders: items,
             totalAmount: sum,
             // paid : true
         }).save();
