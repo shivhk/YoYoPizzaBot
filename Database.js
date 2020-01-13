@@ -2,11 +2,6 @@ const mongoose = require('mongoose');
 const config = require("./config/default");
 const {Schema} = mongoose;
 
-
-// mongoose.connect(`${config.dbUri}/${config.dbName}`);
-// console.log('Connected to DB : ', config.dbName);
-
-
 const Menu = new Schema({
     name : String,
     description : String,

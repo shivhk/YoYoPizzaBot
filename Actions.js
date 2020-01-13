@@ -12,7 +12,6 @@ const addMessage = (message, type) => {
 $(window).load(function() {
     $messages.mCustomScrollbar();
     setTimeout(function() {
-        console.log("window");
         firstMessage();
     }, 100);
 });
@@ -49,13 +48,11 @@ function insertMessage() {
 }
 
 $('.message-submit').click(function() {
-    console.log("Dos");
     insertMessage();
 });
 
 $(window).on('keydown', function(e) {
     if (e.which == 13) {
-        console.log("uno")
         insertMessage();
         return false;
     }
@@ -73,11 +70,10 @@ function message(msg) {
     }
     console.log(msg)
     if(msg == '1'){
-        console.log("One here");
-        $('<div class="message loading new"><figure class="avatar"><img src="images/pija.png" /></figure><span></span></div>').appendTo($('.mCSB_container'));
+        $('<div class="message loading new"><figure class="avatar"><img src="https://images.unsplash.com/photo-1546993641-097e8366bba0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80" /></figure><span></span></div>').appendTo($('.mCSB_container'));
         updateScrollbar();
         $('.message.loading').remove();
-        $('<div class="message new"><figure class="avatar"><img src="images/pija.png" /></figure>' + "Please select from the menu and specify the quantity" + '</div>').appendTo($('.mCSB_container')).addClass('new');
+        $('<div class="message new"><figure class="avatar"><img src="https://images.unsplash.com/photo-1546993641-097e8366bba0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80" /></figure>' + "Please select from the menu and mandatorily specify the quantity." + '</div>').appendTo($('.mCSB_container')).addClass('new');
 
         setDate();
         updateScrollbar();
@@ -98,26 +94,23 @@ function message(msg) {
     }
     else if (msg=='2')
     {
-        console.log("to track order");
-        $('<div class="message new"><figure class="avatar"><img src="images/pija.png" /></figure>' + "Please enter the order Id" + '</div>').appendTo($('.mCSB_container')).addClass('new');
+        $('<div class="message new"><figure class="avatar"><img src="images/https://images.unsplash.com/photo-1546993641-097e8366bba0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80" /></figure>' + "Please enter the order Id" + '</div>').appendTo($('.mCSB_container')).addClass('new');
 
 
     }
     else if(msg!=='1' || msg!=='2')
     {
-        console.log(msg);
         fetch('/orderStatus/' + new URLSearchParams(msg)).then((response)=>response.json()).then(
             (data)=>{
-                console.log(data);
                 if (data.orders.exists)
                 {
-                    $('<div class="message new"><figure class="avatar"><img src="images/pija.png" /></figure>' +"Your Pizza is "+data.orders.orders[0].status+" It will be delivered to you shortly."+'</div>').appendTo($('.mCSB_container')).addClass('new');
+                    $('<div class="message new"><figure class="avatar"><img src="https://images.unsplash.com/photo-1546993641-097e8366bba0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80" /></figure>' +"Your Pizza is "+data.orders.orders[0].status+" It will be delivered to you shortly."+'</div>').appendTo($('.mCSB_container')).addClass('new');
                 }
                 else
                 {
-                    $('<div class="message new"><figure class="avatar"><img src="images/pija.png" /></figure>' +"Looks like there is no Order for this ID."+'</div>').appendTo($('.mCSB_container')).addClass('new');
+                    $('<div class="message new"><figure class="avatar"><img src="https://images.unsplash.com/photo-1546993641-097e8366bba0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80" /></figure>' +"Looks like there is no Order for this ID."+'</div>').appendTo($('.mCSB_container')).addClass('new');
                 }
-                $('<div class="message new"><figure class="avatar"><img src="images/pija.png" /></figure>' +"Enter Another Order ID or refresh the page to start the process over."+'</div>').appendTo($('.mCSB_container')).addClass('new');
+                $('<div class="message new"><figure class="avatar"><img src="https://images.unsplash.com/photo-1546993641-097e8366bba0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80" /></figure>' +"Enter Another Order ID or refresh the page to start the process over."+'</div>').appendTo($('.mCSB_container')).addClass('new');
             }
         )
     }
@@ -128,14 +121,14 @@ function firstMessage() {
     if ($('.message-input').val() != '') {
         return false;
     }
-    $('<div class="message loading new"><figure class="avatar"><img src="images/pija.png" /></figure><span></span></div>').appendTo($('.mCSB_container'));
+    $('<div class="message loading new"><figure class="avatar"><img src="https://images.unsplash.com/photo-1546993641-097e8366bba0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80" /></figure><span></span></div>').appendTo($('.mCSB_container'));
     updateScrollbar();
 
     setTimeout(function() {
         $('.message.loading').remove();
-        $('<div class="message new"><figure class="avatar"><img src="images/pija.png" /></figure>' + Fake[i] + '</div>').appendTo($('.mCSB_container')).addClass('new');
-        $('<div class="message new"><figure class="avatar"><img src="images/pija.png" /></figure>' + Fake[i+1] + '</div>').appendTo($('.mCSB_container')).addClass('new');
-        $('<div class="message new"><figure class="avatar"><img src="images/pija.png" /></figure>' + Fake[i+2] + '</div>').appendTo($('.mCSB_container')).addClass('new');
+        $('<div class="message new"><figure class="avatar"><img src="https://images.unsplash.com/photo-1546993641-097e8366bba0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80" /></figure>' + Fake[i] + '</div>').appendTo($('.mCSB_container')).addClass('new');
+        $('<div class="message new"><figure class="avatar"><img src="https://images.unsplash.com/photo-1546993641-097e8366bba0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80" /></figure>' + Fake[i+1] + '</div>').appendTo($('.mCSB_container')).addClass('new');
+        $('<div class="message new"><figure class="avatar"><img src="https://images.unsplash.com/photo-1546993641-097e8366bba0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80" /></figure>' + Fake[i+2] + '</div>').appendTo($('.mCSB_container')).addClass('new');
         setDate();
         updateScrollbar();
         i++;
@@ -147,8 +140,8 @@ const menu = {};
 let menuItems = [];
 
 const onQuantityChange = (event) =>{
-    console.log("quantity values : "+event.target.value);
-    console.log("name : "+event.target.name);
+    // console.log("quantity values : "+event.target.value);
+    // console.log("name : "+event.target.name);
 
     menuItems.find(menu => {
         if (menu._id===event.target.name)
@@ -184,12 +177,12 @@ const saveOrder = () =>{
     };
 
 
+    //using fetch to POST data, by building req above as POST.
     fetch('/createOrder',options).then(
         (response) => response.json()
     ).then((data)=>{
-        console.log(data);
-        $('<div class="message new"><figure class="avatar"><img src="images/pija.png" /></figure>' +data.message.toPay+" on receiving the order."+ '</div>').appendTo($('.mCSB_container')).addClass('new');
-        $('<div class="message new"><figure class="avatar"><img src="images/pija.png" /></figure>' + "This is your orderID : "+data.message.orderId +". Use it to get the status of your order."+ '</div>').appendTo($('.mCSB_container')).addClass('new');
+        $('<div class="message new"><figure class="avatar"><img src="https://images.unsplash.com/photo-1546993641-097e8366bba0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80" /></figure>' +data.message.toPay+" on receiving the order."+ '</div>').appendTo($('.mCSB_container')).addClass('new');
+        $('<div class="message new"><figure class="avatar"><img src="https://images.unsplash.com/photo-1546993641-097e8366bba0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80" /></figure>' + "This is your orderID : "+data.message.orderId +". Use it to get the status of your order."+ '</div>').appendTo($('.mCSB_container')).addClass('new');
     });
 }
 
@@ -199,13 +192,14 @@ function getMenu(){
          .then(data=>
          {
              menuItems = data.menuItems;
-             $('<div class="message new"><figure class="avatar"><img src="images/pija.png" /></figure>' + `<div class="menuList">${data.menuItems.reduce((acc, item) =>`${acc}
+             $('<div class="message new"><figure class="avatar"><img src="https://images.unsplash.com/photo-1546993641-097e8366bba0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80" /></figure>' + `<div class="menuList">${data.menuItems.reduce((acc, item) =>`${acc}
                 <div class="menuItem">
                 <input type="checkbox" value="${item._id}" name="${item.name}" onchange="onCheckBoxChange(event)"/>
                 <label class="checkBoxLabel" for="${item.name}">${item.name}</label>
+                <label class="checkBoxLabel" for="${item.name}">${item.price}rs/-</label>
                 <input type="number" name="${item._id}" defaultvalue="1" min ="0" class="quantityInput" onchange="onQuantityChange(event)"/>
                 </div>`, '')}
-                <button type="submit" class="menu-submit-button" onclick="saveOrder()">Send</button></div>` + '</div>').appendTo($('.mCSB_container')).addClass('new');
+                <button type="submit" class="menu-submit-button" onclick="saveOrder()">Place Order</button></div>` + '</div>').appendTo($('.mCSB_container')).addClass('new');
          });
 }
 

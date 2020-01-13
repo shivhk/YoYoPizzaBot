@@ -9,6 +9,5 @@ const { Menu } = include('./Database');
  */
 exports.getMenu = async (req, res) => {
     let menuItems = await Menu.find({});
-    console.log("menuItems");
     res.send({ success: true, menuItems });
 };

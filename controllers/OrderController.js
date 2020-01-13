@@ -30,8 +30,6 @@ exports.create = async (req, res) =>{
             totalAmount: sum,
         }).save();
 
-        console.log(saved);
-
         //building message to send as response
         const message = {
             toPay : `please pay ${sum}rs/- `,
@@ -79,7 +77,6 @@ exports.getOrder = async (req, res) =>{
     if (Array.isArray(orderOfInterest) && orderOfInterest.length)
     {
         responseJSON.exists = true;
-        console.log(responseJSON);
         res.send({success:true, orders: responseJSON});
     }
     else
