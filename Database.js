@@ -12,6 +12,24 @@ const options = new Schema({
    description : String
 });
 
+var refObject = function (userName, number, salary) {
+    this.name = name || "";
+    this.number = number || "";
+    this.salary = salary || 5000;
+
+
+    //creates one function throughout all instances
+    refObject.prototype.getSalary = function () {
+        return "$"+this.salary;
+    }
+
+    //creates one function for each object created
+    this.getSalary = function () {
+        return "$"+this.salary;
+    }
+
+}
+
 const orderDetails = new Schema(
     {
         id:String,

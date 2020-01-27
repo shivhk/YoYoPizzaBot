@@ -10,4 +10,10 @@ const { Menu } = include('./Database');
 exports.getMenu = async (req, res) => {
     let menuItems = await Menu.find({});
     res.send({ success: true, menuItems });
+
+    //could do that here
+    //if DB objects are found, return them
+    //else, create new ones
+    //execute a script probably
+    //or do a Collection.insertMany
 };

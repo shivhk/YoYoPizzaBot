@@ -94,7 +94,7 @@ function message(msg) {
     }
     else if (msg=='2')
     {
-        $('<div class="message new"><figure class="avatar"><img src="images/https://images.unsplash.com/photo-1546993641-097e8366bba0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80" /></figure>' + "Please enter the order Id" + '</div>').appendTo($('.mCSB_container')).addClass('new');
+        $('<div class="message new"><figure class="avatar"><img src="https://images.unsplash.com/photo-1546993641-097e8366bba0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80" /></figure>' + "Please enter the order Id" + '</div>').appendTo($('.mCSB_container')).addClass('new');
 
 
     }
@@ -168,6 +168,8 @@ const saveOrder = () =>{
         acc.push(item);
     }return acc;},[]);//defining an accumulator and setting its default value to an array
 
+
+
     const options = {
         method: 'POST', // or 'PUT'
         headers: {
@@ -196,7 +198,7 @@ function getMenu(){
                 <div class="menuItem">
                 <input type="checkbox" value="${item._id}" name="${item.name}" onchange="onCheckBoxChange(event)"/>
                 <label class="checkBoxLabel" for="${item.name}">${item.name}</label>
-                <label class="checkBoxLabel" for="${item.name}">${item.price}rs/-</label>
+                <label class="priceLabel" for="${item.name}">${item.price}rs/-</label>
                 <input type="number" name="${item._id}" defaultvalue="1" min ="0" class="quantityInput" onchange="onQuantityChange(event)"/>
                 </div>`, '')}
                 <button type="submit" class="menu-submit-button" onclick="saveOrder()">Place Order</button></div>` + '</div>').appendTo($('.mCSB_container')).addClass('new');

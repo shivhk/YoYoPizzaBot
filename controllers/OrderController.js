@@ -27,7 +27,7 @@ exports.create = async (req, res) =>{
             //why zero elements are stored in db?
             //because items=request.body,not some other value.
             itemsOrders: items,
-            totalAmount: sum,
+            totalAmount: sum
         }).save();
 
         //building message to send as response
